@@ -1,0 +1,6 @@
+md "D:\androidCLASS\kaiza3\zldhd\build\intermediates\ndkBuild\debug\lib\armeabi-v7a" >NUL 2>NUL || rem
+E:/androidsdk23/ndk-bundle/build//../prebuilt/windows-x86_64/bin/echo.exe [armeabi-v7a] "Gdbserver      ": "[arm-linux-androideabi] D:\androidCLASS\kaiza3\zldhd\build\intermediates\ndkBuild\debug\lib/armeabi-v7a/gdbserver"
+copy /b/y "E:\androidsdk23\ndk-bundle\build\\..\prebuilt\android-arm\gdbserver\gdbserver" "D:\androidCLASS\kaiza3\zldhd\build\intermediates\ndkBuild\debug\lib\armeabi-v7a\gdbserver" > NUL
+E:/androidsdk23/ndk-bundle/build//../prebuilt/windows-x86_64/bin/echo.exe [armeabi-v7a] "Gdbsetup       ": "D:\androidCLASS\kaiza3\zldhd\build\intermediates\ndkBuild\debug\lib/armeabi-v7a/gdb.setup"
+E:/androidsdk23/ndk-bundle/build//../prebuilt/windows-x86_64/bin/echo.exe "set solib-search-path D:/androidCLASS/kaiza3/zldhd/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a" > D:\androidCLASS\kaiza3\zldhd\build\intermediates\ndkBuild\debug\lib/armeabi-v7a/gdb.setup
+E:/androidsdk23/ndk-bundle/build//../prebuilt/windows-x86_64/bin/echo.exe "directory E:/androidsdk23/ndk-bundle/build//../toolchains/llvm/prebuilt/windows-x86_64/sysroot E:/androidsdk23/ndk-bundle/build//../sources/cxx-stl/system" >> D:\androidCLASS\kaiza3\zldhd\build\intermediates\ndkBuild\debug\lib/armeabi-v7a/gdb.setup
