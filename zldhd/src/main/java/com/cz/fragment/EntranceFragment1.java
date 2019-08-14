@@ -34,6 +34,8 @@ import java.util.Map;
 public class EntranceFragment1 extends EntranceBase{
 
 
+    private static final String TAG = "EntranceFragment1";
+
     public String inCarNumber = "";
     public Long inTime = 0L;
 
@@ -79,6 +81,15 @@ public class EntranceFragment1 extends EntranceBase{
         InputStream inputStream2 = null;
         try {
 
+            Log.i(TAG,FileUtil.getSDCardPath());
+
+            //上传照片到文件管理器
+            Map<String, String> param = new HashMap<String, String>();
+            param.put("uid", uuid);
+            param.put("pictype", "1");
+            HttpManager2.onResponseFile(Static_bean.getcarpicsup_upPicToOss(), param, "file",uuid+".jpg",pImgFull,this, "addPhoto");
+
+
             //如果不含"无"，保存车牌特写
             if(!carNumber.contains("无")){
             //保存车牌特写
@@ -88,12 +99,6 @@ public class EntranceFragment1 extends EntranceBase{
             //全景
             inputStream = new ByteArrayInputStream(pImgFull);
             ImageUitls.saveFrameToPath(BitmapFactory.decodeStream(inputStream), FileUtil.getSDCardPath() + "/tcb/" + uuid + ".jpg");
-
-            //上传照片到文件管理器
-            Map<String, String> param = new HashMap<String, String>();
-            param.put("uid", uuid);
-            param.put("pictype", "1");
-            HttpManager2.onResponseFile(Static_bean.getcarpicsup_upPicToOss(), param, "file",uuid+".jpg",pImgFull,this, "addPhoto");
 
         } catch (Exception e) {
 
@@ -245,11 +250,6 @@ public class EntranceFragment1 extends EntranceBase{
 
     //TODO  拍照接收
     public void onDataReceive( DataReceiveBean dataReceiveBean ){
-
-        dataReceiveBean.setpImgFull(null);
-        dataReceiveBean.setpImgPlateClip(null);
-        Log.i(TAG,"224接收图片上传到oos-----------"+new Gson().toJson(dataReceiveBean));
-
 
         String carNumber = StringUtil.is_valid(dataReceiveBean.getPlateResult().cph)
                             ?dataReceiveBean.getPlateResult().cph:PlateResult.readImageData(dataReceiveBean.getPlateResult().license);
